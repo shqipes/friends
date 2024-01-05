@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+
+{% block head_title %}{{ block.super }} - galleria{% endblock head_title %}
+
+{% block content %}
+
+<h1>CREAZIONI DI IDEE ARTIGIANALI</h1>
+
+<div class="container my-5 text-center" style="max-width:580px">
+    <h1>GADGET per TUTTI!</h1>
+    <p class="lead">Concediti ora una favolosa idea </p>
+    
+    <a href="#" type="button" class="btn btn-secondary">Contattaci</a>
+</div>
+
+<div class="container">
+    <div class="row">
+        {% for articolo in articoli %}
+        <div class="col-sm">
+            <div class="card" style="width: 18rem;">
+                <img src="{{articolo.foto.url}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{ articolo.nome }}</h5>
+                    <p class="card-text">€{{ articolo.prezzo }}</p>
+                    <a href="#" class="btn btn-primary">Descrizione</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+{% endblock content %}

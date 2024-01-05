@@ -40,33 +40,42 @@
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container-fluid">
-            <a class="navbar-brand" href="/">FRIENDS PET</a>
+      <div class="container">
+        <a class="navbar-brand" href="/">
+          <img src="{% static 'gallery/logo.png' %}" alt="">
+          CREO IDEE</a>
         
-                   
-{% if request.user.is_authenticated %}
-          <li class="nav-item dropdown">
-            <a
+
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'listart' %}"
+                >Galleria <span class="sr-only">(current)</span></a
+              >
+            </li>
+            {% if request.user.is_authenticated %}
+            <li class="nav-item dropdown">
+              <a
                 class="nav-link dropdown-toggle"
                 href="#"
                 id="navbarDropdown"
                 role="button"
                 data-bs-toggle="dropdown"
                 aria-haspopup="true"
-            aria-expanded="false">
-{{ request.user.username }}
-            </a>
+                aria-expanded="false"
+              >
+                {{ request.user.username }}
+              </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a
                   class="dropdown-item"
-                  href="{% url 'user_profile' username=request.user.username %}"
+                  href="#"
                   >Profilo</a
                 >
-                <a class="dropdown-item" href="{% url 'password_change' %}"
+                <a class="dropdown-item" href="#"
                   >Aggiorna Password</a
                 >
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="{% url 'logout' %}">Esci</a>
+                <a class="dropdown-item" href="#">Esci</a>
               </div>
             </li>
             {% else %}
@@ -79,10 +88,9 @@
               <a class="nav-link" href="{% url 'login' %}">Login</a>
             </li>
             {% endif %}
-          
+          </ul>
         </div>
       </div>
-      
     </nav>
 
 
