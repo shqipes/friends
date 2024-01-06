@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+
+{% block head_title %}{{ block.super }} - galleria{% endblock head_title %}
+
+{% block content %}
+
+<div class="container my-5 text-center" style="max-width:580px">
+    <h1>TUTTI I DETTAGLI</h1>
+    
+    
+    
+	<h1>{{ articolo.nome }}</h1>
+<div class="card">
+	
+    <div class="card-header">
+		
+	</div>
+	<img src="{{articolo.foto.url}}" alt="">
+        
+	</div>
+	<div class="card">
+	
+		<div class="card-header">
+			
+		</div>
+		
+			<h4 class="card-text">{{ articolo.descrizione }}</h4>
+			<p class="card-text">€{{ articolo.prezzo }}</p>
+		</div>
+		<div><a href="#" type="button" class="btn btn-secondary">Contattaci</a></div>
+	{% endblock content %}

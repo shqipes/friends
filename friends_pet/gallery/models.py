@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 # Create your models here.
 class Categoria(models.Model):
@@ -27,6 +28,9 @@ class Articolo(models.Model):
     class Meta:
         verbose_name = "Articolo"
         verbose_name_plural = "Articoli"
+        
+    def get_absolute_url(self):
+        return reverse("listart", kwargs={"pk": self.pk})
     
     
     
