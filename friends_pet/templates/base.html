@@ -68,14 +68,14 @@
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a
                   class="dropdown-item"
-                  href="#"
+                  href="{% url 'user_profile' username=request.user.username %}"
                   >Profilo</a
                 >
-                <a class="dropdown-item" href="#"
+                <a class="dropdown-item" href="{% url 'password_change' %}"
                   >Aggiorna Password</a
                 >
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Esci</a>
+                <a class="dropdown-item" href="{% url 'logout' %}">Esci</a>
               </div>
             </li>
             {% else %}

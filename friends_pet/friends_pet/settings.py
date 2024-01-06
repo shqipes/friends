@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'crispy_bootstrap5', # pip install crispy-bootstrap5
     
     'accounts',
+    'contatto',
     'core',
     'gallery',
 ]
@@ -69,6 +70,7 @@ TEMPLATES = [
                  os.path.join(BASE_DIR, 'accounts/templates'),
                  os.path.join(BASE_DIR, 'core/templates'),
                  os.path.join(BASE_DIR, 'gallery/templates'),
+                 os.path.join(BASE_DIR, 'contatto/templates'),
             ],
         'APP_DIRS': True,
         'OPTIONS': {
