@@ -29,4 +29,8 @@ $RECYCLE.BIN/
 # Visual Studio
 .vscode/
 .history/
+<<<<<<< HEAD
 *.code-workspace
+=======
+*.code-workspace
+>>>>>>> 9ce45542affa77c6d02532514225c652fbb37f84
