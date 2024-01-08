@@ -11,12 +11,12 @@ class Categoria(models.Model):
     class Meta:
         verbose_name = "Categoria"
         verbose_name_plural = "Categorie"
-    
-    
-
+        
+        
 class Articolo(models.Model):
     foto = models.ImageField()
     nome = models.CharField(max_length=25)
+    cod_art = models.CharField(max_length=6, blank=True, null=True)
     descrizione = models.TextField()
     prezzo = models.FloatField()
     

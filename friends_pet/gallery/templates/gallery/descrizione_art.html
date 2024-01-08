@@ -5,28 +5,29 @@
 
 {% block content %}
 
-<div class="container my-5 text-center" style="max-width:580px">
-    <h1>TUTTI I DETTAGLI</h1>
-    
-    
-    
-	<h1>{{ articolo.nome }}</h1>
-<div class="card">
-	
-    <div class="card-header">
 		
-	</div>
-	<img src="{{articolo.foto.url}}" alt="">
-        
-	</div>
-	<div class="card">
-	
-		<div class="card-header">
-			
+<div class="row">
+	<div class="col-sm-6 mb-3 mb-sm-3">
+	  <div class="card">
+		<div class="card-body">
+			<img src="{{articolo.foto.url}}" class="card-img-top" alt="...">
 		</div>
-		
+	  </div>
+	</div>
+	<div class="col-sm-6">
+	  <div class="card">
+		<div class="card-body">
+			<div class="card-title"><h3>Descrizione:</h3></div>
 			<h4 class="card-text">{{ articolo.descrizione }}</h4>
-			<p class="card-text">€{{ articolo.prezzo }}</p>
 		</div>
-		<div><a href="#" type="button" class="btn btn-secondary">Contattaci</a></div>
-	{% endblock content %}
+	  </div>
+	</div>
+  </div>    
+	
+<div class="row" style="text-align: right;">
+	<h1>{{ articolo.nome }} | € {{ articolo.prezzo }}</h1>
+	<a href="#" type="button" class="btn btn-secondary">Mi piace, lo voglio!</a>
+</div>
+
+
+{% endblock content %}
