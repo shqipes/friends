@@ -1,17 +1,6 @@
 from django.db import models
 from django.urls import reverse
-
 # Create your models here.
-class Categoria(models.Model):
-    nome = models.CharField(max_length=20)
-    
-    def __str__(self):
-        return self.nome
-    
-    class Meta:
-        verbose_name = "Categoria"
-        verbose_name_plural = "Categorie"
-        
         
 class Articolo(models.Model):
     foto = models.ImageField()
@@ -31,6 +20,4 @@ class Articolo(models.Model):
         
     def get_absolute_url(self):
         return reverse("listart", kwargs={"pk": self.pk})
-    
-    
     
