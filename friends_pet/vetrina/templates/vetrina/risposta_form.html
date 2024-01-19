@@ -1,0 +1,8 @@
+{% load crispy_forms_tags %}
+
+<form method="POST" action="{% url 'richiesta_articolo' pk=categoria_v.pk %}" class="mb-3" >
+	{% csrf_token %}
+	{{ form_richiesta|crispy }}
+	<input type="submit" class="btn btn-info" value="Richiedi">
+
+</form>

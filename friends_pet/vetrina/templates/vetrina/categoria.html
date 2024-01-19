@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block head_title %}{{ block.super }} - {{ categoria.titolo }}{% endblock head_title %}
+
+{% block content %}
+
+
+    <div class="card my-3">
+            <div class="card-header pb-0">
+                <h2>Articolo: <span style="color: aqua;">{{ categoria_v.articolo_appartenenza }}</span></h2>
+				<h3>"{{ categoria_v.titolo }}"</h3>
+            </div>
+					
+            <div class="card-header py-0">
+				{% if request.user == richiesta.autore_richiesta %}
+                <p class="text-muted mb-0">
+                    {{ richiesta.data_richiesta|date:"d M Y" }}
+					<br>User: {{ richiesta.autore_richiesta }}</p><p class="text-muted" >Richieste: {{ richiesta.autore_richiesta.richieste.count }}</p>
+                </p>
+            </div>
+        
+	<div class="card-header py-0">
+		<h4 style="color: blueviolet;">Ordinazione:</h4>
+        <div class="card-body">
+            <div class="col-xl-2 col-4">
+                <h5> {{ richiesta.contenuto}}</h5>  
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %} 
+
+    {% if request.user.is_authenticated %}
+        {% include 'vetrina/risposta_form.html' %}
+    {% else %}
+        <div class="alert alert-info" role="alert">
+            Per richiedere l'articolo devi prima effettuare il <a href="{% url 'login' %}?next={{ request.get_full_path }}">login</a>
+        </div>
+    {% endif %}
+
+{% endblock content %}

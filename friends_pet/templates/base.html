@@ -16,25 +16,27 @@
       integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0"
       crossorigin="anonymous"
     />
-
     <script
-      defer
-      src="https://use.fontawesome.com/releases/v5.0.8/js/solid.js"
-      integrity="sha384-+Ga2s7YBbhOD6nie0DzrZpJes+b2K1xkpKxTFFcx59QmVPaSA8c7pycsNaFwUK6l"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      defer
-      src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js"
-      integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c"
-      crossorigin="anonymous"
-    ></script>
+    defer
+    src="https://use.fontawesome.com/releases/v5.0.8/js/solid.js"
+    integrity="sha384-+Ga2s7YBbhOD6nie0DzrZpJes+b2K1xkpKxTFFcx59QmVPaSA8c7pycsNaFwUK6l"
+    crossorigin="anonymous"
+  ></script>
 
-    <link
-      href="https://fonts.googleapis.com/css?family=Slabo+27px"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="{% static 'css/pett.css' %}" />
+  <script
+    defer
+    src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js"
+    integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c"
+    crossorigin="anonymous"
+  ></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Aclonica&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'css/nice.css' %}" />    
+    
+    
 
     <title>{% block head_title %}Creo idee{% endblock head_title %}</title>
   </head>
@@ -42,7 +44,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark " style="background-color: #4a5759;" >
       <div class="container" >
         <a class="navbar-brand" href="/" >
-          <img src="{% static 'gallery/logo1.png' %}" alt="">
+          <img src="{% static 'core/logo1.png' %}" alt="">
           CREO IDEE</a>
         
 
@@ -50,6 +52,11 @@
             <li class="nav-item">
               <a class="nav-link" href="{% url 'listart' %}"
                 >Galleria <span class="sr-only">(current)</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'view_art' %}"
+                >Vetrina<span class="sr-only">(current)</span></a
               >
             </li>
             {% if request.user.is_authenticated %}
@@ -70,6 +77,11 @@
                   class="dropdown-item"
                   href="{% url 'user_profile' username=request.user.username %}"
                   >Profilo</a
+                >
+                <a
+                  class="dropdown-item"
+                  href="#"
+                  >lista richieste</a
                 >
                 <a class="dropdown-item" href="{% url 'password_change' %}"
                   >Aggiorna Password</a

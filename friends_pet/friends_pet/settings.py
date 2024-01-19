@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'contatto',
     'core',
     'gallery',
+    'vetrina',
 ]
 
 CRISPY_TEMPLATE_PACK = "bootstrap5"
@@ -71,6 +72,7 @@ TEMPLATES = [
                  os.path.join(BASE_DIR, 'core/templates'),
                  os.path.join(BASE_DIR, 'gallery/templates'),
                  os.path.join(BASE_DIR, 'contatto/templates'),
+                 os.path.join(BASE_DIR, 'vetrina/templates'),
             ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -131,9 +133,9 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
-
-STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static-storage')]
+STATIC_URL = '/static/'
+
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
