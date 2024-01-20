@@ -5,12 +5,12 @@
 
 {% block content %}
 
-		
+	
 <div class="row">
 	<div class="col-sm-6 mb-3 mb-sm-3">
 	  <div class="card">
 		<div class="card-body">
-			<img src="{{articolo.foto.url}}" class="card-img-top" alt="...">
+			<img src="{{ oggetto.foto.url }}" class="card-img-top" alt="...">
 		</div>
 	  </div>
 	</div>
@@ -18,22 +18,22 @@
 	  <div class="card">
 		<div class="card-body">
 			<div class="card-title"><h3>Descrizione:</h3></div>
-			<h4 class="card-text">{{ articolo.descrizione }}</h4>
+			<h4 class="card-text">{{ oggetto.descrizione }}</h4>
 		</div>
 	  </div>
 	</div>
   </div>    
 	
 <div class="row" style="text-align: right;">
-	<h1>{{ articolo.nome }} | € {{ articolo.prezzo }}</h1>
+	<h1>{{ oggetto.nome }} | € {{ oggetto.prezzo }}</h1>
 	<a href="#" type="button" class="btn btn-secondary">Puoi scegliere una variante</a>
 </div>
 
-{% for categoria in categoria %}
+{% for tipologia in categoria %}
 
 <div class="row">
 	<div class="container" style="padding: 1cm;">
-		<h4><a href="{% url 'view_categoria' pk=categoria.pk %}"> {{ categoria.titolo }} </a></h4>
+		<h4><a href="{% url 'view_categoria' pk=tipologia.pk %}"> {{ tipologia.titolo }} </a></h4>
 	</div>
 </div>
 {% endfor %}

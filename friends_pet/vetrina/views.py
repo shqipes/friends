@@ -6,24 +6,24 @@ from django.urls.base import reverse
 from django.views.generic.edit import DeleteView
 from django.core.paginator import Paginator
 
-from .models import Articolo, Categoria, Richiesta, User
+from .models import Oggetto, Tipologia, Domanda, User
 from .forms import PostModelForm
 
 class VisualizzaArticolo(ListView):
-    queryset = Articolo.objects.all()
+    queryset = Oggetto.objects.all()
     template_name = "vetrina/lista_articoli.html"
     context_object_name = "lista_articoli"
     
 def articolo_dettaglio(request, pk):
-    articolo = get_object_or_404(Articolo, pk=pk)
-    categoria_articolo = Categoria.objects.filter(
-        articolo_appartenenza=articolo)
-    context = {"articolo": articolo, "categoria": categoria_articolo}
+    oggetto = get_object_or_404(Oggetto, pk=pk)
+    tipologia_oggetto = Tipologia.objects.filter(
+        oggetto_appartenenza=oggetto)
+    context = {"oggetto": oggetto, "categoria": tipologia_oggetto}
     return render(request, "vetrina/articolo_dettaglio.html", context)
 
 def categoria_visualizza(request, pk):
-    categoria = get_object_or_404(Categoria, pk=pk)
-    richiesta_categoria = Richiesta.objects.filter(categoria=categoria)
+    categoria = get_object_or_404(Tipologia, pk=pk)
+    richiesta_categoria = Domanda.objects.filter(tipologia_appartenenza=categoria)
     form_richiesta = PostModelForm()
     context = {"categoria_v": categoria, 
                "form_richiesta": form_richiesta, 
@@ -31,13 +31,13 @@ def categoria_visualizza(request, pk):
     return render(request, "vetrina/categoria.html", context)
 
 def aggiungi_richiesta(request, pk):
-    categoria = get_object_or_404(Categoria, pk=pk)
+    categoria = get_object_or_404(Tipologia, pk=pk)
     if request.method == "POST":
         form = PostModelForm(request.POST)
         if form.is_valid():
             form.save(commit=False)
-            form.instance.categoria = categoria
-            form.instance.autore_richiesta = request.user
+            form.instance.tipologia = categoria
+            form.instance.autore_domanda = request.user
             form.save()
             url_categoria = reverse("view_categoria", kwargs={"pk": pk})
             return HttpResponseRedirect(url_categoria)
@@ -47,12 +47,12 @@ def aggiungi_richiesta(request, pk):
           
 
 class CancellaPost(DeleteView):
-    model = Richiesta
+    model = Domanda
     success_url = "/"
 
     def get_queryset(self):
         queryset = super().get_queryset()
-        return queryset.filter(autore_richiesta_id=self.request.user.id)	
+        return queryset.filter(autore_domanda_id=self.request.user.id)	
 
 	
  

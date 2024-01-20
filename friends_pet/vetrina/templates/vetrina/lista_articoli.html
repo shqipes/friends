@@ -13,22 +13,21 @@
 
     <div class="container">
     <div class="row"> 
-{% for articolo in lista_articoli %}                     
+{% for oggetto in lista_articoli %}                     
         <div class="col-sm"> 
-            <div class="head_title"><h5 class="card-title" style="color: #4a5759;"><strong>{{ articolo.nome }}</strong></h5></div>          
+            <div class="head_title"><h5 class="card-title" style="color: #4a5759;"><strong>{{ oggetto.nome }}</strong></h5></div>          
             <div class="card mb-3" style="width: 18rem;">
-                <img src="{{articolo.foto.url}}" class="card-img-top" alt="...">
+                <img src="{{oggetto.foto.url}}" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h3>{{ categoria.titolo }}</h3>
-                     <p class="card-text">in due parole..</p>
+                    <p class="card-text">in due parole..</p>
                 </div>
                 <div class="container">
                     <div class="row">
-                    <a href="{% url 'articolo_view' pk=articolo.pk %}" class="btn " style="background-color: #b0c4b1;">Descrizione</a>
+                    <a href="{% url 'articolo_view' pk=oggetto.pk %}" class="btn " style="background-color: #b0c4b1;">Descrizione</a>
                     <a href="{% url 'contact_view' %}" type="button" class="btn btn-danger" ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
                     <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"/>
                     </svg>mi piace</a>
-                    <p style="text-align: right; color: #420664 "><strong> {{ articolo.prezzo }} €</strong></p>
+                    <p style="text-align: right; color: #420664 "><strong> {{ oggetto.prezzo }} €</strong></p>
                     </div>
                 </div>
             </div>

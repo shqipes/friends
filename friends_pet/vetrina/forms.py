@@ -1,11 +1,11 @@
 from django import forms
 
-from .models import Categoria, Richiesta
+from .models import Domanda
 
 class PostModelForm(forms.ModelForm):
 		
 	class Meta:
-		model = Richiesta
+		model = Domanda
 		fields = ["contenuto"]
 		widgets = {
 			"Tema" : forms.Textarea(attrs={'rows': '7'})

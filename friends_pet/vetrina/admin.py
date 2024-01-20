@@ -1,6 +1,6 @@
 from django.contrib import admin
-from .models import Articolo, Categoria, Richiesta
+from .models import Domanda, Oggetto,Tipologia
 
-admin.site.register(Articolo)
-admin.site.register(Categoria)  
-admin.site.register(Richiesta) 
+admin.site.register(Domanda)
+admin.site.register(Oggetto)  
+admin.site.register(Tipologia) 
