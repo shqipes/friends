@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block head_title %}{{ block.super }} - Richiesta salvata{% endblock head_title %}
+
+{% block content %}
+
+<div class="row justify-content-center mt-4">
+	<div class="col-8 text-center">
+		<h2 style="color: brown;">La tua richiesta  è stata inoltrata. grazie</h2>
+		<a href="{% url 'view_art' %}">puoi tornare alla vetrina</a>
+	</div>
+</div>
+
+{% endblock content %}

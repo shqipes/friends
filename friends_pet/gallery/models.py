@@ -1,13 +1,14 @@
 from django.db import models
 from django.urls import reverse
+
 # Create your models here.
         
 class Articolo(models.Model):
     foto = models.ImageField()
-    nome = models.CharField(max_length=25)
+    nome = models.CharField(max_length=25, blank=True, null=True)
     cod_art = models.CharField(max_length=6, blank=True, null=True)
-    descrizione = models.TextField()
-    prezzo = models.FloatField()
+    descrizione = models.TextField(blank=True, null=True)
+    prezzo = models.FloatField(blank=True, null=True)
     
     
     

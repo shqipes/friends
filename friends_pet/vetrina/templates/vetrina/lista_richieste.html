@@ -5,26 +5,30 @@
 
 {% block content %}
 
-{% for richiesta in richiesta_w %}
+{% for domanda in richiesta_w %}
     <div class="card my-3">
             <div class="card-header pb-0">
-                <h2>Articolo: <span style="color: aqua;">{{ richiesta_w.articolo_appartenenza }}</span></h2>
-				<h3>"{{ categoria.titolo }}"</h3>
+                <h2>Articolo: <span style="color: aqua;">{{ domanda.oggetto_appartenenza }}</span></h2>
+				<h3>"{{ domanda.tipologia_appartenenza }}"</h3>
             </div>
 					
             <div class="card-header py-0">
 				
-                <p class="text-muted mb-0">
-                    {{ richiesta.data_richiesta|date:"d M Y" }}
-					<br>User: {{ richiesta.autore_richiesta }}</p><p class="text-muted" >Richieste: {{ richiesta.autore_richiesta.richieste.count }}</p>
+                <p class="text-muted mb-0">richiesta del: 
+                    {{ domanda.data_domanda|date:"d M Y" }}
                 </p>
+                    <br><p class="mb-0">Cliente: 
+                        <a href="{% url 'user_profile' username=domanda.autore_domanda.username %}">
+                        <strong>{{ domanda.autore_domanda }}</strong></a>
+                    </p>
+				
             </div>
         
 	<div class="card-header py-0">
 		<h4 style="color: blueviolet;">Ordinazione:</h4>
         <div class="card-body">
             <div class="col-xl-2 col-4">
-                <h5> {{ richiesta.contenuto}}</h5>  
+                <h5> {{ domanda.contenuto}}</h5>  
             </div>
         </div>
     </div>

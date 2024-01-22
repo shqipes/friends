@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic.list import ListView
-from django.http import HttpResponseRedirect, HttpResponseBadRequest, request
+from django.http import HttpResponseRedirect, HttpResponseBadRequest, request, HttpResponse
 from django.shortcuts import render, get_object_or_404
 from django.urls.base import reverse
 from django.views.generic.edit import DeleteView
@@ -31,20 +31,32 @@ def categoria_visualizza(request, pk):
     return render(request, "vetrina/categoria.html", context)
 
 def aggiungi_richiesta(request, pk):
-    categoria = get_object_or_404(Tipologia, pk=pk)
+    tipologia = get_object_or_404(Tipologia, pk=pk)
+    oggetto = get_object_or_404(Oggetto, pk=pk )
     if request.method == "POST":
         form = PostModelForm(request.POST)
         if form.is_valid():
             form.save(commit=False)
-            form.instance.tipologia = categoria
+            form.instance.tipologia = tipologia
+            form.instance.oggetto_appartenenza = oggetto
+            form.instance.tipologia_appartenenza = tipologia
             form.instance.autore_domanda = request.user
             form.save()
             url_categoria = reverse("view_categoria", kwargs={"pk": pk})
-            return HttpResponseRedirect(url_categoria)
+            return HttpResponseRedirect(reverse('domanda_salva'))
         else:
             return HttpResponseBadRequest()
         
-          
+def risposta_salvata(request):
+    return render(request,'vetrina/domanda_salvata.html')
+    
+        
+class vista_domande(ListView):
+    queryset = Domanda.objects.all()
+    template_name = "vetrina/lista_richieste.html"
+    context_object_name = "richiesta_w"
+    
+              
 
 class CancellaPost(DeleteView):
     model = Domanda

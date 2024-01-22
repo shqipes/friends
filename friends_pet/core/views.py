@@ -11,3 +11,6 @@ def user_profile_view(request, username):
     user = get_object_or_404(User, username=username)
     context = {"user": user}
     return render(request, 'core/user_profile.html', context)
+
+def staff_home(request):
+    return render(request, "core/home_staff.html")

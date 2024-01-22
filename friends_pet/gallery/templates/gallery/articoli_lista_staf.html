@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+
+{% block head_title %}{{ block.super }} - galleria{% endblock head_title %}
+
+{% block content %}
+{% if request.user.is_staff %}
+    <div class="container text-center"><h1 style="color: #FFAFCC; size: 50px; "><strong>Pagina di Staff</strong></h1></div>
+        <div class="container my-5 text-center" style="max-width:580px">
+            <h2>Puoi aggiungere o eliminare foto dalla galleria</h2>
+        </div>
+    </div>
+
+    <div class="container">
+    <div class="row"> 
+{% for articolo in lista_staf %}                     
+        <div class="col-sm">            
+            <div class="card mb-3" style="width: 18rem;">
+                <img src="{{articolo.foto.url}}" class="card-img-top" alt="...">
+                <a href="{% url 'del_art' articolo.pk  %}"><i class="fas fa-minus-circle"></i></a>
+            </div>
+        </div>
+        
+        <br>
+{% endfor %}
+    </div>
+    </div>
+    <a class="btn btn-sm btn-danger" href="{% url 'add_art' %}">Aggiungi Articolo</a>
+    {% else %}
+    <h1 style="color: crimson;">Non sei autorizzato per questa sezione!</h1>    
+    {% endif %}    
+    
+{% endblock content %}
